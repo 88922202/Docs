@@ -2,13 +2,13 @@
  * <h3></h3>
  * Created by root on 2016/11/3.
  */
-public interface List<E> {
+public interface List {
 
     int size();
 
-    void add(E e);
+    void add(Object o);
 
-    E remove(E e);
+    Object remove(Object o);
 
     boolean isEmpty();
 
