@@ -17,4 +17,6 @@ public interface List {
     Object get(int index);
 
     int indexOf(Object o);
+
+    int lastIndexOf(Object o);
 }

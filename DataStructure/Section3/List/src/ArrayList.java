@@ -93,4 +93,13 @@ public class ArrayList implements List {
         }
         return -1;
     }
+
+    @Override
+    public int lastIndexOf(Object o) {
+        for (int i = mSize - 1; i >= 0; i--){
+            if (mDatas[i] != null && mDatas[i].equals(o))
+                return i;
+        }
+        return -1;
+    }
 }

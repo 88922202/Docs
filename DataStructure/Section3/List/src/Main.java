@@ -13,6 +13,7 @@ public class Main {
         }
 
         testList.remove(9);
+        testList.add(6);
         for (int i = 0; i < testList.size(); i++){
             System.out.print(testList.get(i));
         }
@@ -21,6 +22,7 @@ public class Main {
         System.out.println();
 
         System.out.println(testList.indexOf(6));
+        System.out.println(testList.lastIndexOf(6));
 
         //System.out.println(testList.size());
     }
