@@ -6,7 +6,10 @@ public class Main {
 
     public static void main(String args[]){
         ArrayList testList = new ArrayList();
-        testList.add(2);
+        for (int i = 0; i < 12; i++){
+            testList.add(i);
+        }
+
         System.out.println(testList.size());
     }
 }

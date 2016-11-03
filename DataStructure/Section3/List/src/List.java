@@ -6,7 +6,7 @@ public interface List {
 
     int size();
 
-    void add(Object o);
+    boolean add(Object o);
 
     Object remove(Object o);
 

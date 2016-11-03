@@ -21,11 +21,23 @@ public class ArrayList implements List {
     }
 
     @Override
-    public void add(Object o) {
-        if (mSize < DEFAULT_SIZE - 1){
-            mDatas[mSize++] = o;
-        }else {
-            throw new IndexOutOfBoundsException();
+    public boolean add(Object o) {
+        ensureCapacity(mSize + 1);
+        mDatas[mSize++] = o;
+
+        return true;
+    }
+
+    private void ensureCapacity(int capacity){
+        int oldCapacity = mDatas.length;
+        if (capacity > oldCapacity){
+            int newCapacity = oldCapacity * 3 / 2 + 1;
+            if (newCapacity < capacity){
+                newCapacity = capacity;
+            }
+            Object[] datas = new Object[newCapacity];
+            System.arraycopy(mDatas, 0, datas, 0, oldCapacity);
+            mDatas = datas;
         }
     }
 
