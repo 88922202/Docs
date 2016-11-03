@@ -15,4 +15,6 @@ public interface List {
     void clear();
 
     Object get(int index);
+
+    int indexOf(Object o);
 }

@@ -45,7 +45,7 @@ public class ArrayList implements List {
     public boolean remove(Object o) {
         boolean result = false;
         for (int i = 0; i < mSize; i++){
-            if (mDatas[i].equals(o)){
+            if (mDatas[i] != null && mDatas[i].equals(o)){
                 if (i != mSize - 1) {
                     System.arraycopy(mDatas, i + 1, mDatas, i, mSize - i);
                 }
@@ -83,5 +83,14 @@ public class ArrayList implements List {
         }
 
         return mDatas[index];
+    }
+
+    @Override
+    public int indexOf(Object o) {
+        for (int i = 0; i < mSize; i++){
+            if (mDatas[i] != null && mDatas[i].equals(o))
+                return i;
+        }
+        return -1;
     }
 }
