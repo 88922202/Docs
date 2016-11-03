@@ -8,14 +8,19 @@ import java.util.Scanner;
  */
 public class TreeTraverse {
 
+    private static BinaryThreadNode<Integer> preNode;
+
     public static void main(String args[]){
 //        BinaryTreeNode<Integer> tree = createTree();
 //        preOrderTraverse(tree);
 //        inOrderTraverse(tree);
+        BinaryThreadNode<Integer> tree = createThreadingTree();
+        inThreading(tree);
+        inOrderTraverseThreadingTree(tree);
 //        postOrderTraverse(tree);
 
-        BinaryTreeNode<Integer> tree = preOrderCreateTree("12#3##4##");
-        preOrderTraverse(tree);
+//        BinaryTreeNode<Integer> tree = preOrderCreateTree("12#3##4##");
+//        preOrderTraverse(tree);
     }
 
     /**
@@ -102,16 +107,52 @@ public class TreeTraverse {
     }
 
     /**
-     * 中序遍历线索化
+     * TODO 中序遍历线索化
      */
-    private void InThreading(BinaryThreadNode<Integer> node){
+    private static void inThreading(BinaryThreadNode<Integer> node){
+
         if (node == null){
             return;
         }
 
-        InThreading(node.getLeftChild());
+        if(node.getLeftChild() == null){
+            node.setLeftChild(preNode);
+            node.setLeftTag(true);
+        }else {
+            inThreading(node.getLeftChild());
+        }
+
         System.out.println(node.getData());
-        InThreading(node.getRightChild());
+
+        if (preNode != null && preNode.getRightChild() == null){
+            preNode.setRightChild(node);
+            preNode.setRightTag(true);
+        }
+
+        if (preNode != null && node.getRightChild() == null){
+            preNode.setRightChild(node);
+        }else {
+            inThreading(node.getRightChild());
+        }
+
+        preNode = node;
+    }
+
+    /**
+     * 中序遍历显示一棵线索二叉树
+     */
+    private static void inOrderTraverseThreadingTree(BinaryThreadNode<Integer> node){
+        if (node == null){
+            return;
+        }
+        if (!node.isLeftTag()) {
+            inOrderTraverseThreadingTree(node.getLeftChild());
+        }
+        System.out.println(node.getData() + "," + node.isLeftTag() + "," + (node.getLeftChild() == null? "null":node.getLeftChild().getData()) + "," + node.isRightTag() + "," + (node.getRightChild() == null?"null":node.getRightChild().getData()) );
+        if (!node.isRightTag()) {
+            inOrderTraverseThreadingTree(node.getRightChild());
+        }
+
     }
 
 
@@ -127,6 +168,25 @@ public class TreeTraverse {
         BinaryTreeNode<Integer> forth = new BinaryTreeNode<>();
         forth.setData(4);
         BinaryTreeNode<Integer> fifth = new BinaryTreeNode<>();
+        fifth.setData(5);
+        third.setLeftChild(forth);
+        third.setRightChild(fifth);
+
+        return first;
+    }
+
+    private static BinaryThreadNode<Integer> createThreadingTree(){
+        BinaryThreadNode<Integer> first = new BinaryThreadNode<>();
+        first.setData(1);
+        BinaryThreadNode<Integer> second = new BinaryThreadNode<>();
+        second.setData(2);
+        BinaryThreadNode<Integer> third = new BinaryThreadNode<>();
+        third.setData(3);
+        first.setLeftChild(second);
+        first.setRightChild(third);
+        BinaryThreadNode<Integer> forth = new BinaryThreadNode<>();
+        forth.setData(4);
+        BinaryThreadNode<Integer> fifth = new BinaryThreadNode<>();
         fifth.setData(5);
         third.setLeftChild(forth);
         third.setRightChild(fifth);
