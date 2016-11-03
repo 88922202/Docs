@@ -75,4 +75,13 @@ public class ArrayList implements List {
         }
         mSize = 0;
     }
+
+    @Override
+    public Object get(int index) {
+        if (index >= mSize || index < 0){
+            throw new IndexOutOfBoundsException();
+        }
+
+        return mDatas[index];
+    }
 }

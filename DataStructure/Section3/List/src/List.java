@@ -13,4 +13,6 @@ public interface List {
     boolean isEmpty();
 
     void clear();
+
+    Object get(int index);
 }

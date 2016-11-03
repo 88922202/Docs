@@ -11,10 +11,10 @@ public class Main {
         }
 
         testList.remove(9);
-//        for (int i = 0; i < testList.size(); i++){
-//            System.out.print(testList.get(i));
-//        }
+        for (int i = 0; i < testList.size(); i++){
+            System.out.print(testList.get(i));
+        }
 
-        System.out.println(testList.size());
+        //System.out.println(testList.size());
     }
 }
