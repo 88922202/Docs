@@ -8,7 +8,7 @@ public interface List {
 
     boolean add(Object o);
 
-    Object remove(Object o);
+    boolean remove(Object o);
 
     boolean isEmpty();
 

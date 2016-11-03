@@ -42,9 +42,22 @@ public class ArrayList implements List {
     }
 
     @Override
-    public Object remove(Object e) {
-
-        return null;
+    public boolean remove(Object o) {
+        boolean result = false;
+        for (int i = 0; i < mSize; i++){
+            if (mDatas[i].equals(o)){
+                if (i != mSize - 1) {
+                    System.arraycopy(mDatas, i + 1, mDatas, i, mSize - i);
+                }
+//                for (int j = i; j < mSize - 1; j++){
+//                    mDatas[j] = mDatas[j + 1];
+//                }
+                mDatas[mSize - 1] = null;
+                mSize--;
+                result = true;
+            }
+        }
+        return result;
     }
 
     @Override
