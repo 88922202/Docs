@@ -28,6 +28,18 @@ public class ArrayList implements List {
         return true;
     }
 
+    @Override
+    public void add(int index, Object o) {
+        if (index >= mSize || index < 0){
+            throw new IndexOutOfBoundsException();
+        }
+
+        ensureCapacity(mSize + 1);
+        System.arraycopy(mDatas, index, mDatas, index + 1, mSize - index);
+        mDatas[index] = o;
+        mSize++;
+    }
+
     private void ensureCapacity(int capacity){
         int oldCapacity = mDatas.length;
         if (capacity > oldCapacity){
@@ -58,6 +70,27 @@ public class ArrayList implements List {
             }
         }
         return result;
+    }
+
+    @Override
+    public Object remove(int index) {
+        if (index >= mSize || index < 0){
+            throw new IndexOutOfBoundsException();
+        }
+
+        Object object = mDatas[index];
+
+        for (int j = index; j < mSize - 1; j++){
+            mDatas[j] = mDatas[j + 1];
+        }
+
+//        if (index != mSize - 1) {
+//            System.arraycopy(mDatas, index + 1, mDatas, index, mSize - index - 1);
+//        }
+        mDatas[mSize - 1] = null;
+        mSize--;
+
+        return object;
     }
 
     @Override

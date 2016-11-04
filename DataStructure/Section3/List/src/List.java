@@ -8,7 +8,11 @@ public interface List {
 
     boolean add(Object o);
 
+    void add(int index, Object o);
+
     boolean remove(Object o);
+
+    Object remove(int index);
 
     boolean isEmpty();
 
