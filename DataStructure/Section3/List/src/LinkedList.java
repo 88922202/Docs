@@ -28,23 +28,41 @@ public class LinkedList implements List {
             throw new IndexOutOfBoundsException();
         }
 
-        if (mSize == 0) {
+        if (index == 0) {
             mHead = new Entry(o, null, null);
+        }else {
+            Entry entry = getInternal(index - 1);
+            entry.mNext = new Entry(o, entry, null);
         }
-
-        Entry entry = getInternal(index - 1);
-        entry.mNext = new Entry(o, entry, null);
         mSize++;
     }
 
     @Override
     public boolean remove(Object o) {
+        int index = indexOf(o);
+        if (index != -1){
+            remove(index);
+            return true;
+        }
+
         return false;
     }
 
     @Override
     public Object remove(int index) {
-        return null;
+        Entry previous = getInternal(index - 1);
+        Entry current = getInternal(index);
+        Entry next = getInternal(index + 1);
+        if (previous != null) {
+            previous.mNext = next;
+        }else {
+            mHead = next;
+        }
+        if (next != null) {
+            next.mPrevious = previous;
+        }
+        mSize--;
+        return current;
     }
 
     @Override
@@ -76,6 +94,9 @@ public class LinkedList implements List {
     }
 
     private Entry getInternal(int index){
+        if (index > mSize || index < 0){
+            return null;
+        }
         Entry entry = mHead;
         for (int i = 0; i < index; i++){
             entry = entry.mNext;

@@ -37,11 +37,16 @@ public class Main {
             linkedList.add(i);
         }
 
-        linkedList.add(4);
+        //linkedList.add(4);
 
         System.out.println(linkedList.get(6));
         System.out.println(linkedList.indexOf(4));
         System.out.println(linkedList.lastIndexOf(4));
+
+        linkedList.remove(0);
+        for (int i = 0; i < linkedList.size(); i++){
+            System.out.print(linkedList.get(i));
+        }
     }
 
     private static void changeValue(People people){
