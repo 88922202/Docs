@@ -18,20 +18,23 @@ public class LinkedList implements List {
 
     @Override
     public boolean add(Object o) {
-        if (mSize == 0) {
-            mHead = new Entry(o, null, null);
-        }else {
-            Entry entry = new Entry(o, null, null);
-            tail().mNext = entry;
-            entry.mPrevious = tail();
-        }
-        mSize++;
+        add(mSize, o);
         return true;
     }
 
     @Override
     public void add(int index, Object o) {
+        if (index > mSize || index < 0){
+            throw new IndexOutOfBoundsException();
+        }
 
+        if (mSize == 0) {
+            mHead = new Entry(o, null, null);
+        }
+
+        Entry entry = getInternal(index - 1);
+        entry.mNext = new Entry(o, entry, null);
+        mSize++;
     }
 
     @Override
@@ -68,10 +71,15 @@ public class LinkedList implements List {
     }
 
     private Entry tail() {
+        return getInternal(mSize);
+    }
+
+    private Entry getInternal(int index){
         Entry entry = mHead;
-        for (int i = 0; i < mSize - 1; i++){
+        for (int i = 0; i < index; i++){
             entry = entry.mNext;
         }
+
         return entry;
     }
 
