@@ -37,7 +37,11 @@ public class Main {
             linkedList.add(i);
         }
 
+        linkedList.add(4);
+
         System.out.println(linkedList.get(6));
+        System.out.println(linkedList.indexOf(4));
+        System.out.println(linkedList.lastIndexOf(4));
     }
 
     private static void changeValue(People people){

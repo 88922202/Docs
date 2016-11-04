@@ -54,7 +54,8 @@ public class LinkedList implements List {
 
     @Override
     public void clear() {
-
+        mHead = null;
+        mSize = 0;
     }
 
     @Override
@@ -85,12 +86,31 @@ public class LinkedList implements List {
 
     @Override
     public int indexOf(Object o) {
-        return 0;
+        Entry entry = mHead;
+        int index = -1;
+        while (entry != null){
+            index++;
+            if (entry.mData != null && entry.mData.equals(o)){
+                return index;
+            }
+            entry = entry.mNext;
+        }
+        return -1;
     }
 
     @Override
     public int lastIndexOf(Object o) {
-        return 0;
+        Entry entry = mHead;
+        int index = -1;
+        int lastIndex = -1;
+        while (entry != null){
+            index++;
+            if (entry.mData != null && entry.mData.equals(o)){
+                lastIndex = index;
+            }
+            entry = entry.mNext;
+        }
+        return lastIndex;
     }
 
     private static class Entry{
@@ -98,10 +118,10 @@ public class LinkedList implements List {
         private Entry mNext;
         private Entry mPrevious;
 
-        Entry(Object data, Entry next, Entry previous){
+        Entry(Object data, Entry previous, Entry next){
             mData = data;
-            mNext = next;
             mPrevious = previous;
+            mNext = next;
         }
     }
 }
