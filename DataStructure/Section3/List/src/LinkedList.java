@@ -89,10 +89,6 @@ public class LinkedList implements List {
         return entry.mData;
     }
 
-    private Entry tail() {
-        return getInternal(mSize);
-    }
-
     private Entry getInternal(int index){
         if (index > mSize || index < 0){
             return null;
