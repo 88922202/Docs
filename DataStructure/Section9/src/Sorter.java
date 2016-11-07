@@ -71,8 +71,34 @@ public class Sorter {
         }
     }
 
-    public void quickSort(int[] datas){
+    public void quickSort(int[] datas, int left, int right){
 
+        if (left >= right){
+            return;
+        }
+
+        int i = left + 1;
+        int j = right;
+        int base = datas[left];
+        while (i != j) {
+            while (datas[j] > base && i < j) {
+                j--;
+            }
+
+            while (datas[i] < base && i < j) {
+                i++;
+            }
+
+            int temp = datas[j];
+            datas[j] = datas[i];
+            datas[i] = temp;
+        }
+
+        datas[left] = datas[i];
+        datas[i] = base;
+
+        quickSort(datas, left, i - 1);
+        quickSort(datas, i + 1, right);
     }
 
     public void shellSort(int[] datas){
