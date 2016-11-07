@@ -70,6 +70,7 @@ public class Sorter {
             }
         }
 
+        //TODO 错误，修改了指向数组的指针，无论排序结果正确与否，对方法实参的待排序数组不会有任何影响。
         datas = temps;
     }
 
