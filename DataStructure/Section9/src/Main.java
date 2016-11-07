@@ -4,7 +4,7 @@
  */
 public class Main {
 
-    private static int mDatas[] = {3, 5, 0, 20, 12, -1, -7, 66, 12, 21};
+    private static int mDatas[] = {3, 5, 0, 20, 12, 8, 5, 66, 12, 21};
 
     public static void main(String args[]){
         Sorter sorter = new Sorter();
@@ -44,11 +44,13 @@ public class Main {
 //        }
 //        System.out.println();
 
-        sorter.quickSort(mDatas, 0, mDatas.length - 1);
-        for (int i = 0; i < mDatas.length; i++){
-            System.out.print(mDatas[i] + ",");
-        }
-        System.out.println();
+//        sorter.quickSort(mDatas, 0, mDatas.length - 1);
+//        for (int i = 0; i < mDatas.length; i++){
+//            System.out.print(mDatas[i] + ",");
+//        }
+//        System.out.println();
+
+        sorter.bucketSort(mDatas);
 
     }
 }

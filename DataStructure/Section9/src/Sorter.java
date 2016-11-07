@@ -1,3 +1,5 @@
+import sun.rmi.runtime.Log;
+
 /**
  * <h3></h3>
  * Created by root on 2016/11/4.
@@ -122,10 +124,20 @@ public class Sorter {
             }
         }
 
-        int temps[] = new int[max];
+        System.out.println("max=" + max + "");
+
+        int temps[] = new int[max + 1];
 
         for (int i = 0; i < datas.length; i++){
             temps[datas[i]] += 1;
         }
+
+        for (int i = 0; i < temps.length; i++){
+            for (int j = 0; j < temps[i]; j++){
+                System.out.print(i + ",");
+            }
+        }
+
+        System.out.println();
     }
 }
