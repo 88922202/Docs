@@ -140,4 +140,12 @@ public class Sorter {
 
         System.out.println();
     }
+
+    //增加基数排序
+    public void radixSort(int[] datas){
+        int[] bases = new int[10];
+        for (int i = 0; i < datas.length; i++){
+
+        }
+    }
 }
