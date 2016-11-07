@@ -17,8 +17,8 @@ public class Sorter {
     }
 
     public void bubbleSort2(int[] datas){
-        for (int i = 0; i < datas.length - 1; i++){
-            for (int j = i; j < datas.length - 1; j++){
+        for (int i = 0; i < datas.length; i++){
+            for (int j = 0; j < datas.length - i - 1; j++){
                 if(datas[j] > datas[j + 1]){
                     int temp = datas[j];
                     datas[j] = datas[j + 1];
@@ -26,6 +26,24 @@ public class Sorter {
                 }
             }
         }
+    }
+
+//    public void bubbleSort3(int[] datas){
+//        boolean sorted = false;
+//
+//        for (int i = 0; i < datas.length; i++){
+//            for (int j = 0; j < datas.length - i - 1; j++){
+//                if(datas[j] > datas[j + 1]){
+//                    int temp = datas[j];
+//                    datas[j] = datas[j + 1];
+//                    datas[j + 1] = temp;
+//                }
+//            }
+//        }
+//    }
+
+    public void selectSort(){
+        
     }
 
     public void insertSort(int[] datas){
