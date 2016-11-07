@@ -58,20 +58,17 @@ public class Sorter {
     }
 
     public void insertSort(int[] datas){
-        int temps[] = new int[datas.length];
-        for (int i = datas.length - 1; i >=0; i--){
-            for (int j = 0; j < temps.length; j++){
-                if (datas[i] < temps[j]){
-                    for (int k = temps.length - 2; k > j; k--) {
-                        temps[k + 1] = temps[k];
+        for (int i = 0; i < datas.length; i++){
+            for (int j = 0; j < i; j++){
+                if (datas[i] < datas[j]){
+                    int temp = datas[i];
+                    for (int k = i; k > j; k--){
+                        datas[k] = datas[k - 1];
                     }
-                    temps[j] = datas[i];
+                    datas[j] = temp;
                 }
             }
         }
-
-        //TODO 错误，修改了指向数组的指针，无论排序结果正确与否，对方法实参的待排序数组不会有任何影响。
-        datas = temps;
     }
 
     public void quickSort(int[] datas){
