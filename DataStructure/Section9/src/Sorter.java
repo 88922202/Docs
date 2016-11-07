@@ -42,8 +42,19 @@ public class Sorter {
 //        }
 //    }
 
-    public void selectSort(){
-        
+    public void selectSort(int[] datas){
+        for (int i = 0; i < datas.length - 1; i++){
+            int min = datas[i];
+            int minPosition = i;
+            for (int j = i + 1; j < datas.length; j++){
+                if (min > datas[j]){
+                    min = datas[j];
+                    minPosition = j;
+                }
+            }
+            datas[minPosition] = datas[i];
+            datas[i] = min;
+        }
     }
 
     public void insertSort(int[] datas){
